@@ -1,0 +1,116 @@
+{
+  "HeroBanner": {
+    "total": 3,
+    "migrated": 2,
+    "skipped": 0,
+    "failed": 1,
+    "details": [
+      {
+        "id": "697342e89a9c09659b40b5aa",
+        "title": "Welcome to Kano State",
+        "status": "failed",
+        "reason": "Request failed with status code 404"
+      },
+      {
+        "id": "697342e99a9c09659b40b5ad",
+        "title": "Digital Services Portal",
+        "oldUrl": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2940",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/hero-banners/27619996f917cefd0de27f81dc64a168?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014841Z&X-Amz-Expires=604800&X-Amz-Signature=587ade96fa28078ae2450876dc4d80064acd6b96241c8d660276fd8de346d582&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      },
+      {
+        "id": "697342ea9a9c09659b40b5b0",
+        "title": "Latest Developments",
+        "oldUrl": "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?q=80&w=2940",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/hero-banners/e5848385090ea9dd59d1849995d0ef39?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014851Z&X-Amz-Expires=604800&X-Amz-Signature=d6f6fbb51d887e3b6609f2406c2e1f8fd47c7b603143da3c19463de930d44b2b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      }
+    ]
+  },
+  "Project": {
+    "total": 8,
+    "migrated": 8,
+    "skipped": 0,
+    "failed": 0,
+    "details": [
+      {
+        "id": "6970a3586a1b00bd2b07b426",
+        "title": "Kano Metro Line Expansion",
+        "oldUrl": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=500&q=80&fit=crop",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/projects/101179e850080c4f320b9227ed247e23?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014902Z&X-Amz-Expires=604800&X-Amz-Signature=889aaaa65e576f2b572be9de4469e9b1881d28145597e267d4dc6c027af570ef&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      },
+      {
+        "id": "6970a8c910429566ba179cf1",
+        "title": "Specialist Hospital Complex",
+        "oldUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=500&q=80&fit=crop",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/projects/a0f4ba6a4e425518c92cb43765b26ceb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014911Z&X-Amz-Expires=604800&X-Amz-Signature=cb94ae37c33467ba85cae3de1604ac9bfe56a1b06cd493d242261971970aa71a&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      },
+      {
+        "id": "6970a8cc10429566ba179cf4",
+        "title": "Smart Schools Initiative",
+        "oldUrl": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=500&q=80&fit=crop",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/projects/d400d33e780bf7bc457b37926e080630?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014917Z&X-Amz-Expires=604800&X-Amz-Signature=293a72995700c587d873159b1be59d73796805e2edf47882793efda2e5530fb5&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      },
+      {
+        "id": "6970a8ce10429566ba179cf7",
+        "title": "Challawa-Bompai Road Reconstruction",
+        "oldUrl": "https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?w=800&h=500&q=80&fit=crop",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/projects/753c8152dd359ccdb22ac311de66dceb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014923Z&X-Amz-Expires=604800&X-Amz-Signature=c10814a264c7fd3571d1f2126b071f75340aa1d8d117f64021551f242293ccf9&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      },
+      {
+        "id": "6970a8d110429566ba179cfa",
+        "title": "Rural Water Supply Project",
+        "oldUrl": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=500&q=80&fit=crop",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/projects/d81ee36207ca12123560c9e2b8a4043a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014931Z&X-Amz-Expires=604800&X-Amz-Signature=01115a17f7e48d64191b25ac01d6a66144db3564c9e8f59b589edc323f7d2198&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      },
+      {
+        "id": "6970a8d310429566ba179cfd",
+        "title": "Independent Power Project",
+        "oldUrl": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=500&q=80&fit=crop",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/projects/76e2c3dff9380b303328050fc8bbc9cc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014937Z&X-Amz-Expires=604800&X-Amz-Signature=d05dc47f5b9883a7bd7670c9440cb091752ef5b81614c4ce21c1ffae9356ff81&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      },
+      {
+        "id": "6970a8d610429566ba179d00",
+        "title": "Aminu Kano Teaching Hospital Upgrade",
+        "oldUrl": "https://images.unsplash.com/photo-1587351021355-a479a299d2f9?w=800&h=500&q=80&fit=crop",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/projects/42f35c014a03da59d3d5fd9170328881?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014945Z&X-Amz-Expires=604800&X-Amz-Signature=b8f8180ff820bd7916dfcd35a4bd79b441e1fbdcb39ee6fe268b3844b5eaf5f7&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      },
+      {
+        "id": "6970a8d910429566ba179d03",
+        "title": "Kano Technology Hub",
+        "oldUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&q=80&fit=crop",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/projects/a7ba409d35772c8b8fe3d5e971acabd6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014949Z&X-Amz-Expires=604800&X-Amz-Signature=f934c0b83d242e65851a6c833189ab18137354f87ea7509173b20a791a6f5871&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      }
+    ]
+  },
+  "Leader": {
+    "total": 2,
+    "migrated": 2,
+    "skipped": 0,
+    "failed": 0,
+    "details": [
+      {
+        "id": "6970a32b6a1b00bd2b07b2e5",
+        "title": "Executive Governor of Kano State",
+        "oldUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&q=80&fit=crop",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/leaders/3ff0eeefbb3116b8a7e7c831210fbeae?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014952Z&X-Amz-Expires=604800&X-Amz-Signature=786cf0d9c7929f67b236038693b0bd49a23b74d4c8adacdfd84d7d950a517bb3&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      },
+      {
+        "id": "6970a32c6a1b00bd2b07b2e8",
+        "title": "Deputy Governor of Kano State",
+        "oldUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&q=80&fit=crop",
+        "newUrl": "https://eu2.contabostorage.com/kano-state-website/leaders/2ab4c24c5e30f22edc0adcb7fe35ebdc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T014953Z&X-Amz-Expires=604800&X-Amz-Signature=5ddf8e64f7cd781b08c96a33ac5b83015e52284b295a53968ca13a24b492f177&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+        "status": "migrated"
+      }
+    ]
+  }
+}

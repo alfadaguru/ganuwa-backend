@@ -1,0 +1,268 @@
+{
+  "HeroBanner": {
+    "missingImage": [
+      {
+        "id": "697342e89a9c09659b40b5aa",
+        "title": "Welcome to Kano State"
+      }
+    ],
+    "externalUrl": [],
+    "missingPublicId": [],
+    "validS3": [
+      {
+        "id": "697342e99a9c09659b40b5ad",
+        "title": "Digital Services Portal"
+      },
+      {
+        "id": "697342ea9a9c09659b40b5b0",
+        "title": "Latest Developments"
+      }
+    ]
+  },
+  "News": {
+    "missingImage": [
+      {
+        "id": "6970a3256a1b00bd2b07b2c1",
+        "title": "Governor Launches N50 Billion Infrastructure Development Program"
+      },
+      {
+        "id": "6970a3256a1b00bd2b07b2c4",
+        "title": "Free Healthcare Program Reaches 100,000 Beneficiaries"
+      },
+      {
+        "id": "6970a3266a1b00bd2b07b2c7",
+        "title": "Kano Partners with Tech Giants for Digital Education Initiative"
+      },
+      {
+        "id": "6970a3266a1b00bd2b07b2ca",
+        "title": "Governor Receives Delegation from World Bank on Agricultural Development"
+      },
+      {
+        "id": "6970a3276a1b00bd2b07b2cd",
+        "title": "New Industrial Park to Create 5,000 Jobs in Kano"
+      },
+      {
+        "id": "6970a3276a1b00bd2b07b2d0",
+        "title": "Kano Metro Line Project Enters Phase Two"
+      },
+      {
+        "id": "6970a3286a1b00bd2b07b2d3",
+        "title": "State Government Awards Scholarships to 500 Students"
+      },
+      {
+        "id": "6970a3286a1b00bd2b07b2d6",
+        "title": "New Mother & Child Hospitals Open in Three LGAs"
+      },
+      {
+        "id": "6970a3296a1b00bd2b07b2d9",
+        "title": "Kano Signs Investment Agreement Worth $200 Million"
+      }
+    ],
+    "externalUrl": [],
+    "missingPublicId": [],
+    "validS3": []
+  },
+  "Project": {
+    "missingImage": [],
+    "externalUrl": [],
+    "missingPublicId": [],
+    "validS3": [
+      {
+        "id": "6970a3586a1b00bd2b07b426",
+        "title": "Kano Metro Line Expansion"
+      },
+      {
+        "id": "6970a8c910429566ba179cf1",
+        "title": "Specialist Hospital Complex"
+      },
+      {
+        "id": "6970a8cc10429566ba179cf4",
+        "title": "Smart Schools Initiative"
+      },
+      {
+        "id": "6970a8ce10429566ba179cf7",
+        "title": "Challawa-Bompai Road Reconstruction"
+      },
+      {
+        "id": "6970a8d110429566ba179cfa",
+        "title": "Rural Water Supply Project"
+      },
+      {
+        "id": "6970a8d310429566ba179cfd",
+        "title": "Independent Power Project"
+      },
+      {
+        "id": "6970a8d610429566ba179d00",
+        "title": "Aminu Kano Teaching Hospital Upgrade"
+      },
+      {
+        "id": "6970a8d910429566ba179d03",
+        "title": "Kano Technology Hub"
+      }
+    ]
+  },
+  "Leader": {
+    "missingImage": [],
+    "externalUrl": [],
+    "missingPublicId": [],
+    "validS3": [
+      {
+        "id": "6970a32b6a1b00bd2b07b2e5",
+        "title": "Executive Governor of Kano State"
+      },
+      {
+        "id": "6970a32c6a1b00bd2b07b2e8",
+        "title": "Deputy Governor of Kano State"
+      }
+    ]
+  },
+  "MediaGallery": {
+    "missingImage": [
+      {
+        "id": "697343019a9c09659b40b5f0",
+        "title": "Kofar Kudu - Ancient City Gate"
+      },
+      {
+        "id": "697343019a9c09659b40b5f3",
+        "title": "Kurmi Market - 500+ Years of Commerce"
+      },
+      {
+        "id": "697343029a9c09659b40b5f6",
+        "title": "Gidan Makama Museum"
+      },
+      {
+        "id": "697343039a9c09659b40b5f9",
+        "title": "Dalan Gyada Bridge - Historic Infrastructure"
+      },
+      {
+        "id": "697343049a9c09659b40b5fc",
+        "title": "Kano Ancient City Walls"
+      },
+      {
+        "id": "697343059a9c09659b40b5ff",
+        "title": "Emir's Palace - Royal Heritage"
+      },
+      {
+        "id": "697343069a9c09659b40b602",
+        "title": "Nigeria's First Airport - Est. 1936"
+      },
+      {
+        "id": "697343079a9c09659b40b605",
+        "title": "Bagauda Lake - Recreation Hub"
+      }
+    ],
+    "externalUrl": [],
+    "missingPublicId": [],
+    "validS3": []
+  },
+  "User": {
+    "missingImage": [
+      {
+        "id": "696d1ad49eed37293c30003f",
+        "title": "admin@kanostate.gov.ng"
+      }
+    ],
+    "externalUrl": [],
+    "missingPublicId": [],
+    "validS3": []
+  },
+  "Event": {
+    "missingImage": [],
+    "externalUrl": [],
+    "missingPublicId": [],
+    "validS3": []
+  },
+  "Page": {
+    "missingImage": [],
+    "externalUrl": [],
+    "missingPublicId": [],
+    "validS3": []
+  },
+  "MDA": {
+    "missingImage": [
+      {
+        "id": "6970a32c6a1b00bd2b07b2eb",
+        "title": "Ministry of Finance"
+      },
+      {
+        "id": "6970a32d6a1b00bd2b07b2ee",
+        "title": "Ministry of Works and Infrastructure"
+      },
+      {
+        "id": "6970a32d6a1b00bd2b07b2f1",
+        "title": "Ministry of Education"
+      },
+      {
+        "id": "6970a32e6a1b00bd2b07b2f4",
+        "title": "Ministry of Health"
+      },
+      {
+        "id": "6970a32e6a1b00bd2b07b2f7",
+        "title": "Ministry of Agriculture"
+      },
+      {
+        "id": "6970a32f6a1b00bd2b07b2fa",
+        "title": "Ministry of Commerce and Industry"
+      },
+      {
+        "id": "6970a32f6a1b00bd2b07b2fd",
+        "title": "Ministry of Justice"
+      },
+      {
+        "id": "6970a3306a1b00bd2b07b300",
+        "title": "Ministry of Water Resources"
+      },
+      {
+        "id": "6970a3306a1b00bd2b07b303",
+        "title": "Ministry of Environment"
+      },
+      {
+        "id": "6970a3316a1b00bd2b07b306",
+        "title": "Ministry of Women Affairs"
+      },
+      {
+        "id": "6970a3316a1b00bd2b07b309",
+        "title": "Ministry of Local Government"
+      },
+      {
+        "id": "6970a3326a1b00bd2b07b30c",
+        "title": "Ministry of Rural Development"
+      },
+      {
+        "id": "6970a3326a1b00bd2b07b30f",
+        "title": "Kano State Internal Revenue Service (KIRS)"
+      },
+      {
+        "id": "6970a3336a1b00bd2b07b312",
+        "title": "Kano State Information Technology Development Agency (KASITDA)"
+      },
+      {
+        "id": "6970a3336a1b00bd2b07b315",
+        "title": "Kano State Urban Planning and Development Authority (KNUPDA)"
+      },
+      {
+        "id": "6970a3346a1b00bd2b07b318",
+        "title": "Kano State Water Board"
+      },
+      {
+        "id": "6970a3356a1b00bd2b07b31b",
+        "title": "State Universal Basic Education Board (SUBEB)"
+      },
+      {
+        "id": "6970a3356a1b00bd2b07b31e",
+        "title": "Kano State Emergency Management Agency (SEMA)"
+      },
+      {
+        "id": "6970a3366a1b00bd2b07b321",
+        "title": "Kano State Social Investment Programme"
+      },
+      {
+        "id": "6970a3366a1b00bd2b07b324",
+        "title": "Kano State Child Protection Agency"
+      }
+    ],
+    "externalUrl": [],
+    "missingPublicId": [],
+    "validS3": []
+  }
+}

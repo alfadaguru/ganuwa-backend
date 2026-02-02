@@ -1,0 +1,55 @@
+{
+  "success": [],
+  "failed": [
+    {
+      "name": "hero-government-building",
+      "url": "https://images.unsplash.com/photo-1541872703-74c9e44e43b4?q=80&w=2940",
+      "error": "Request failed with status code 404"
+    },
+    {
+      "name": "hero-city-skyline",
+      "url": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2940",
+      "error": "Resolved credential object is not valid"
+    },
+    {
+      "name": "hero-traditional-market",
+      "url": "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?q=80&w=2940",
+      "error": "Resolved credential object is not valid"
+    },
+    {
+      "name": "news-default",
+      "url": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2940",
+      "error": "Resolved credential object is not valid"
+    },
+    {
+      "name": "leader-default",
+      "url": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2787",
+      "error": "Resolved credential object is not valid"
+    },
+    {
+      "name": "news-page-default",
+      "url": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=500&q=80&fit=crop",
+      "error": "Resolved credential object is not valid"
+    },
+    {
+      "name": "media-gallery-1",
+      "url": "https://images.unsplash.com/photo-1577563682339-f950fdec57ff?w=300&h=200&fit=crop",
+      "error": "Request failed with status code 404"
+    },
+    {
+      "name": "media-gallery-2",
+      "url": "https://images.unsplash.com/photo-1588421357574-87938a86fa28?w=300&h=200&fit=crop",
+      "error": "Resolved credential object is not valid"
+    },
+    {
+      "name": "media-gallery-3",
+      "url": "https://images.unsplash.com/photo-1599223773440-62e5aa42e43d?w=300&h=200&fit=crop",
+      "error": "Request failed with status code 404"
+    },
+    {
+      "name": "media-gallery-4",
+      "url": "https://images.unsplash.com/photo-1558403194-611308249627?w=300&h=200&fit=crop",
+      "error": "Resolved credential object is not valid"
+    }
+  ]
+}
