@@ -1,0 +1,18 @@
+{
+  "kano-logo-new.png": {
+    "url": "https://eu2.contabostorage.com/kano-state-website/uploads/037c3322f146c377a0352c705df49bda.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T050213Z&X-Amz-Expires=604800&X-Amz-Signature=94b7fadaeccdc564668feb6324410230ca9c2c4f50391139734037c765415939&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "key": "uploads/037c3322f146c377a0352c705df49bda.png",
+    "publicId": "uploads/037c3322f146c377a0352c705df49bda.png",
+    "originalName": "kano-logo-new.png",
+    "mimeType": "image/png",
+    "size": 146776
+  },
+  "kano-logo-new-white-bg.png": {
+    "url": "https://eu2.contabostorage.com/kano-state-website/uploads/55219086381d4fc89fccabcdce23c3d7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=2ca884359abef20be3bbeaa6ec6ce90f%2F20260202%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260202T050214Z&X-Amz-Expires=604800&X-Amz-Signature=08b4bfb35d3950c5da9687ab0ddba87b8212564e23fafc162562bf363b8bf705&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "key": "uploads/55219086381d4fc89fccabcdce23c3d7.png",
+    "publicId": "uploads/55219086381d4fc89fccabcdce23c3d7.png",
+    "originalName": "kano-logo-new-white-bg.png",
+    "mimeType": "image/png",
+    "size": 123744
+  }
+}
