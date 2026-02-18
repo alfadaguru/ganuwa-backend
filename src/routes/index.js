@@ -27,6 +27,7 @@ const tenderRoutes = require('./tender.routes');
 const jobRoutes = require('./job.routes');
 const foiRequestRoutes = require('./foiRequest.routes');
 const datasetRoutes = require('./dataset.routes');
+const publicAssetsRoutes = require('./publicAssets.routes');
 
 // Mount routes
 router.use('/auth', authRoutes);
@@ -54,6 +55,7 @@ router.use('/tenders', tenderRoutes);
 router.use('/jobs', jobRoutes);
 router.use('/foi-requests', foiRequestRoutes);
 router.use('/datasets', datasetRoutes);
+router.use('/public-assets', publicAssetsRoutes);
 
 // Health check route
 router.get('/health', (req, res) => {
