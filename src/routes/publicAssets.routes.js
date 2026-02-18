@@ -30,4 +30,18 @@ router.get('/landmarks/:imageName', publicAssetsController.getLandmarkImageUrl);
  */
 router.get('/hero-sliders', publicAssetsController.getHeroSliderImages);
 
+/**
+ * @route   GET /api/v1/public-assets/about-section
+ * @desc    Get presigned URLs for about section images
+ * @access  Public
+ */
+router.get('/about-section', publicAssetsController.getAboutSectionImages);
+
+/**
+ * @route   GET /api/v1/public-assets/defaults
+ * @desc    Get presigned URLs for default fallback images
+ * @access  Public
+ */
+router.get('/defaults', publicAssetsController.getDefaultImages);
+
 module.exports = router;

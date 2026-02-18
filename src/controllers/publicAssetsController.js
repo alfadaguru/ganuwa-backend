@@ -169,3 +169,101 @@ exports.getHeroSliderImages = async (req, res) => {
     });
   }
 };
+
+/**
+ * Get presigned URLs for about section images
+ * Public endpoint - no authentication required
+ */
+exports.getAboutSectionImages = async (req, res) => {
+  try {
+    const aboutImages = [
+      { key: 'about-section/heritage.jpg', name: 'Rich Cultural Heritage' },
+      { key: 'about-section/economy.jpg', name: 'Economic Hub' },
+      { key: 'about-section/education.jpg', name: 'Educational Excellence' },
+    ];
+
+    const urlPromises = aboutImages.map(async (img) => {
+      const url = await getPresignedUrl(img.key, 604800);
+      return {
+        key: img.key,
+        name: img.name,
+        url,
+      };
+    });
+
+    const images = await Promise.all(urlPromises);
+
+    res.status(200).json({
+      success: true,
+      data: {
+        images,
+        expiresIn: 604800, // 7 days in seconds
+      },
+    });
+  } catch (error) {
+    logger.error('Get about section images error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to get about section images',
+      error: error.message,
+    });
+  }
+};
+
+/**
+ * Get presigned URLs for default fallback images
+ * Public endpoint - no authentication required
+ */
+exports.getDefaultImages = async (req, res) => {
+  try {
+    const defaultImages = [
+      { key: 'defaults/news-default.jpg', name: 'news', type: 'default' },
+      { key: 'defaults/leader-male-default.jpg', name: 'leaders', type: 'male' },
+      { key: 'defaults/leader-female-default.jpg', name: 'leaders', type: 'female' },
+    ];
+
+    const urlPromises = defaultImages.map(async (img) => {
+      const url = await getPresignedUrl(img.key, 604800);
+      return {
+        key: img.key,
+        name: img.name,
+        type: img.type,
+        url,
+      };
+    });
+
+    const images = await Promise.all(urlPromises);
+
+    // Organize by category
+    const organized = {
+      news: { default: '' },
+      leaders: { male: '', female: '', default: '' },
+    };
+
+    images.forEach((img) => {
+      if (img.name === 'news') {
+        organized.news.default = img.url;
+      } else if (img.name === 'leaders') {
+        organized.leaders[img.type] = img.url;
+        if (img.type === 'male') {
+          organized.leaders.default = img.url; // Use male as default
+        }
+      }
+    });
+
+    res.status(200).json({
+      success: true,
+      data: {
+        images: organized,
+        expiresIn: 604800, // 7 days in seconds
+      },
+    });
+  } catch (error) {
+    logger.error('Get default images error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to get default images',
+      error: error.message,
+    });
+  }
+};
