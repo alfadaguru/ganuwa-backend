@@ -30,11 +30,17 @@ app.use(cors(corsOptions));
 
 // Rate limiting
 const limiter = rateLimit({
-  windowMs: (process.env.RATE_LIMIT_WINDOW || 15) * 60 * 1000, // 15 minutes default
-  max: process.env.RATE_LIMIT_MAX_REQUESTS || 100,
+  windowMs: (process.env.RATE_LIMIT_WINDOW || 15) * 60 * 1000,
+  // Dev: unlimited localhost. Production: 500 requests per window (realistic for a govt website)
+  max: process.env.NODE_ENV === 'development' ? 5000 : (parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 500),
   message: 'Too many requests from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
+  skip: (req) => {
+    // Skip rate limiting for localhost in development
+    const ip = req.ip || req.connection.remoteAddress || '';
+    return process.env.NODE_ENV === 'development' && (ip === '::1' || ip === '127.0.0.1' || ip.includes('::ffff:127.'));
+  },
 });
 
 // Apply rate limiting to all routes

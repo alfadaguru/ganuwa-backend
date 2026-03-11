@@ -8,6 +8,8 @@ const s3Client = new S3Client({
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   },
   forcePathStyle: process.env.AWS_USE_PATH_STYLE_ENDPOINT === 'true',
+  requestChecksumCalculation: 'WHEN_REQUIRED',
+  responseChecksumValidation: 'WHEN_REQUIRED',
 });
 
 module.exports = { s3Client };

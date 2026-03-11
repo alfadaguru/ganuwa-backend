@@ -39,11 +39,14 @@ const budgetDocumentSchema = new mongoose.Schema(
     category: {
       type: String,
       enum: ['annual', 'quarterly', 'capital', 'recurrent', 'supplementary'],
-      required: [true, 'Category is required'],
+    },
+    tags: {
+      type: [String],
+      enum: ['Audit', 'Budget', 'Business', 'Education', 'Finance & Economy', 'Health', 'Infrastructure', 'Judiciary', 'Laws', 'LGAs', 'OCDS', 'Procurement', 'Public', 'Reports', 'Roads & Transport'],
+      default: [],
     },
     year: {
       type: Number,
-      required: [true, 'Year is required'],
       min: [2000, 'Year must be 2000 or later'],
       max: [2100, 'Year must be before 2100'],
     },
@@ -91,9 +94,9 @@ const budgetDocumentSchema = new mongoose.Schema(
   }
 );
 
-// Indexes
-budgetDocumentSchema.index({ slug: 1 });
+// Indexes (slug index is already created by unique: true on the field)
 budgetDocumentSchema.index({ category: 1 });
+budgetDocumentSchema.index({ tags: 1 });
 budgetDocumentSchema.index({ year: -1 });
 budgetDocumentSchema.index({ status: 1 });
 budgetDocumentSchema.index({ publishDate: -1 });

@@ -44,4 +44,11 @@ router.get('/about-section', publicAssetsController.getAboutSectionImages);
  */
 router.get('/defaults', publicAssetsController.getDefaultImages);
 
+/**
+ * @route   GET /api/v1/public-assets/assembly-leadership
+ * @desc    Get presigned URLs for Speaker and Deputy Speaker photos
+ * @access  Public
+ */
+router.get('/assembly-leadership', publicAssetsController.getAssemblyLeadershipImages);
+
 module.exports = router;

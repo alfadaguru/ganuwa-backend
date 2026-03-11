@@ -11,6 +11,7 @@ router.get('/featured', budgetDocumentController.getFeaturedBudgetDocuments);
 router.get('/category/:category', budgetDocumentController.getBudgetDocumentsByCategory);
 router.get('/year/:year', budgetDocumentController.getBudgetDocumentsByYear);
 router.get('/slug/:slug', budgetDocumentController.getBudgetDocumentBySlug);
+router.get('/tag/:tag', budgetDocumentController.getBudgetDocumentsByTag);
 router.get('/:id', budgetDocumentController.getBudgetDocumentById);
 router.post('/:id/download', budgetDocumentController.incrementDownload);
 

@@ -3,6 +3,25 @@ const { successResponse, paginatedResponse } = require('../utils/response');
 const { HTTP_STATUS } = require('../config/constants');
 const { catchAsync, AppError } = require('../middlewares/error.middleware');
 const logger = require('../utils/logger');
+const { getPresignedUrl } = require('../utils/s3Upload');
+
+// If photo is an S3 key (no http), generate a presigned URL
+async function resolvePhotoUrl(photo) {
+  if (!photo) return photo;
+  if (photo.startsWith('http')) return photo;
+  try {
+    return await getPresignedUrl(photo, 604800);
+  } catch {
+    return photo;
+  }
+}
+
+async function resolveLeaderPhoto(leader) {
+  if (!leader) return leader;
+  const resolved = { ...leader };
+  resolved.photo = await resolvePhotoUrl(leader.photo);
+  return resolved;
+}
 
 /**
  * @desc    Get all leaders
@@ -28,7 +47,7 @@ const getAllLeaders = catchAsync(async (req, res, next) => {
   const skip = (page - 1) * limit;
   const sortOrder = order === 'desc' ? -1 : 1;
 
-  const [leaders, totalItems] = await Promise.all([
+  const [leadersRaw, totalItems] = await Promise.all([
     Leader.find(query)
       .sort({ [sortBy]: sortOrder })
       .limit(parseInt(limit))
@@ -36,6 +55,8 @@ const getAllLeaders = catchAsync(async (req, res, next) => {
       .lean(),
     Leader.countDocuments(query),
   ]);
+
+  const leaders = await Promise.all(leadersRaw.map(resolveLeaderPhoto));
 
   paginatedResponse(res, leaders, page, limit, totalItems, 'Leaders retrieved successfully');
 });
@@ -46,11 +67,13 @@ const getAllLeaders = catchAsync(async (req, res, next) => {
  * @access  Public
  */
 const getLeaderById = catchAsync(async (req, res, next) => {
-  const leader = await Leader.findById(req.params.id);
+  const leaderRaw = await Leader.findById(req.params.id).lean();
 
-  if (!leader) {
+  if (!leaderRaw) {
     return next(new AppError('Leader not found', HTTP_STATUS.NOT_FOUND));
   }
+
+  const leader = await resolveLeaderPhoto(leaderRaw);
 
   successResponse(res, HTTP_STATUS.OK, { leader }, 'Leader retrieved successfully');
 });
@@ -127,7 +150,7 @@ const getLeadersByPosition = catchAsync(async (req, res, next) => {
   const skip = (page - 1) * limit;
   const sortOrder = order === 'desc' ? -1 : 1;
 
-  const [leaders, totalItems] = await Promise.all([
+  const [leadersRaw, totalItems] = await Promise.all([
     Leader.find(query)
       .sort({ [sortBy]: sortOrder })
       .limit(parseInt(limit))
@@ -135,6 +158,8 @@ const getLeadersByPosition = catchAsync(async (req, res, next) => {
       .lean(),
     Leader.countDocuments(query),
   ]);
+
+  const leaders = await Promise.all(leadersRaw.map(resolveLeaderPhoto));
 
   paginatedResponse(res, leaders, page, limit, totalItems, `Leaders with position ${position} retrieved successfully`);
 });

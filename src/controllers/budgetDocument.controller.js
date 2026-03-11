@@ -99,6 +99,30 @@ const incrementDownload = catchAsync(async (req, res, next) => {
 });
 
 /**
+ * @desc    Get budget documents by tag
+ * @route   GET /api/v1/budget-documents/tag/:tag
+ * @access  Public
+ */
+const getBudgetDocumentsByTag = catchAsync(async (req, res, next) => {
+  const { tag } = req.params;
+  const { page = 1, limit = 20 } = req.query;
+  const skip = (page - 1) * limit;
+
+  const query = { tags: tag, status: 'published' };
+
+  const [documents, totalItems] = await Promise.all([
+    BudgetDocument.find(query)
+      .sort({ publishDate: -1 })
+      .limit(parseInt(limit))
+      .skip(skip)
+      .lean(),
+    BudgetDocument.countDocuments(query),
+  ]);
+
+  paginatedResponse(res, documents, page, limit, totalItems, 'Budget documents retrieved successfully');
+});
+
+/**
  * @desc    Get featured budget documents
  * @route   GET /api/v1/budget-documents/featured
  * @access  Public
@@ -120,6 +144,7 @@ module.exports = {
   getBudgetDocumentById: baseController.getById,
   getBudgetDocumentsByCategory,
   getBudgetDocumentsByYear,
+  getBudgetDocumentsByTag,
   getBudgetDocumentBySlug,
   createBudgetDocument: baseController.create,
   updateBudgetDocument: baseController.update,
