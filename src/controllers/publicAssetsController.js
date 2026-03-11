@@ -177,9 +177,10 @@ exports.getHeroSliderImages = async (req, res) => {
 exports.getAboutSectionImages = async (req, res) => {
   try {
     const aboutImages = [
-      { key: 'about-section/heritage.jpg', name: 'Rich Cultural Heritage' },
-      { key: 'about-section/economy.jpg', name: 'Economic Hub' },
-      { key: 'about-section/education.jpg', name: 'Educational Excellence' },
+      { key: 'about/9988ef75bea15495c59e831af64c0faf.jpg', name: 'history', section: 'History' },
+      { key: 'about/f2a75466948a8372a8831ad655a16112.png', name: 'geography', section: 'Geography' },
+      { key: 'about/90615d9651520670e6e32865ccc3dd80.jpg', name: 'mdas', section: 'MDAs' },
+      { key: 'about/588193abdaa517dc3a408559dc96418f.jpg', name: 'lgas', section: 'Local Governments' },
     ];
 
     const urlPromises = aboutImages.map(async (img) => {
@@ -187,6 +188,7 @@ exports.getAboutSectionImages = async (req, res) => {
       return {
         key: img.key,
         name: img.name,
+        section: img.section,
         url,
       };
     });
