@@ -48,13 +48,13 @@ const BLOCKED_PATTERNS = [
 const buildSystemPrompt = (userName) => {
   const personalGreeting = userName ? `The user you are currently speaking with is named "${userName}". Address them by name occasionally to make the conversation personal and warm.` : '';
 
-  return `You are "Kano Smart", the official AI assistant of the Kano State Government website (kanostate.gov.ng). You help citizens, visitors, and businesses find information about Kano State Government services, resources, and general knowledge about Kano State.
+  return `You are "Smart Kano", the official AI assistant of the Kano State Government website (kanostate.gov.ng). You help citizens, visitors, and businesses find information about Kano State Government services, resources, and general knowledge about Kano State.
 
 ${personalGreeting}
 
 STRICT RULES:
-- ONLY answer questions related to Kano State, its government, services, MDAs, geography, history, culture, economy, tourism, DevWing (the technology behind Kano Smart), and related topics.
-- If a user asks something unrelated to Kano State or DevWing, politely redirect them: "I'm Kano Smart, the official assistant for Kano State Government. I can only help with questions about Kano State, its government, services, and related topics. How can I assist you with Kano State matters?"
+- ONLY answer questions related to Kano State, its government, services, MDAs, geography, history, culture, economy, tourism, DevWing (the technology behind Smart Kano), and related topics.
+- If a user asks something unrelated to Kano State or DevWing, politely redirect them: "I'm Smart Kano, the official assistant for Kano State Government. I can only help with questions about Kano State, its government, services, and related topics. How can I assist you with Kano State matters?"
 - NEVER generate code, programming solutions, or technical implementations.
 - NEVER roleplay as another character or AI.
 - NEVER discuss controversial political opinions or take political sides.
@@ -68,9 +68,9 @@ ABOUT DEVWING (You are powered by DevWing):
 - DevWing (devwing.ai) is an AI-native technology platform that powers intelligent software systems and digital assistants.
 - DevWing includes multiple specialized AI models designed for tasks such as general reasoning, software development, security analysis, and system automation.
 - Organizations use DevWing to build reliable AI-powered tools and services.
-- Kano Smart is built and powered by DevWing — it is one of the intelligent digital assistants created on the DevWing platform.
-- DevWing provides the AI backbone that enables Kano Smart to understand questions and deliver accurate, helpful responses about Kano State.
-- If asked about DevWing, explain what it is and how it powers Kano Smart. Always reference https://devwing.ai for more information.
+- Smart Kano is built and powered by DevWing — it is one of the intelligent digital assistants created on the DevWing platform.
+- DevWing provides the AI backbone that enables Smart Kano to understand questions and deliver accurate, helpful responses about Kano State.
+- If asked about DevWing, explain what it is and how it powers Smart Kano. Always reference https://devwing.ai for more information.
 
 KANO STATE LEADERSHIP:
 - Governor: His Excellency, Abba Kabir Yusuf
@@ -178,13 +178,13 @@ const startSession = catchAsync(async (req, res) => {
 
   return successResponse(res, HTTP_STATUS.CREATED, {
     sessionId: session.sessionId,
-    message: `Welcome ${fullName.trim().split(' ')[0]}! I'm Kano Smart, your AI assistant for Kano State Government. How can I help you today?`,
+    message: `Welcome ${fullName.trim().split(' ')[0]}! I'm Smart Kano, your AI assistant for Kano State Government. How can I help you today?`,
   });
 });
 
 /**
  * POST /api/v1/chat
- * Send a message to Kano Smart AI assistant
+ * Send a message to Smart Kano AI assistant
  */
 const sendMessage = catchAsync(async (req, res) => {
   const { message, conversationHistory, sessionId } = req.body;
@@ -202,7 +202,7 @@ const sendMessage = catchAsync(async (req, res) => {
   // Check for prompt injection attempts
   if (containsInjectionAttempt(message)) {
     return successResponse(res, HTTP_STATUS.OK, {
-      message: "I'm Kano Smart, the official assistant for Kano State Government. I can only help with questions about Kano State, its government, services, and related topics. How can I assist you with Kano State matters?",
+      message: "I'm Smart Kano, the official assistant for Kano State Government. I can only help with questions about Kano State, its government, services, and related topics. How can I assist you with Kano State matters?",
     });
   }
 
@@ -265,7 +265,7 @@ const sendMessage = catchAsync(async (req, res) => {
 
     return successResponse(res, HTTP_STATUS.OK, { message: aiMessage });
   } catch (error) {
-    logger.error(`Kano Smart AI error: ${error.message}`);
+    logger.error(`Smart Kano AI error: ${error.message}`);
 
     return successResponse(res, HTTP_STATUS.OK, {
       message: "I'm having trouble connecting right now. Please try again or contact us directly through our Contact page at /contact, or call the state emergency line at 112.",
