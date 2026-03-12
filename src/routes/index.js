@@ -28,6 +28,7 @@ const jobRoutes = require('./job.routes');
 const foiRequestRoutes = require('./foiRequest.routes');
 const datasetRoutes = require('./dataset.routes');
 const publicAssetsRoutes = require('./publicAssets.routes');
+const chatRoutes = require('./chat.routes');
 
 // Mount routes
 router.use('/auth', authRoutes);
@@ -56,6 +57,7 @@ router.use('/jobs', jobRoutes);
 router.use('/foi-requests', foiRequestRoutes);
 router.use('/datasets', datasetRoutes);
 router.use('/public-assets', publicAssetsRoutes);
+router.use('/chat', chatRoutes);
 
 // Health check route
 router.get('/health', (req, res) => {
@@ -97,6 +99,7 @@ router.get('/', (req, res) => {
       jobs: '/api/v1/jobs',
       foiRequests: '/api/v1/foi-requests',
       datasets: '/api/v1/datasets',
+      chat: '/api/v1/chat',
     },
     documentation: '/api/v1/docs',
   });

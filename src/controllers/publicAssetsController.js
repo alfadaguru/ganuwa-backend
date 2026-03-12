@@ -274,16 +274,36 @@ exports.getDefaultImages = async (req, res) => {
  * Get presigned URLs for Speaker and Deputy Speaker photos
  * Public endpoint - no authentication required
  */
-exports.getAssemblyLeadershipImages = async (req, res) => {
+exports.getGovernmentArmsImages = async (req, res) => {
   try {
-    const [speaker, deputy] = await Promise.all([
-      getPresignedUrl('leaders/speaker-falgore.jpg', 604800),
-      getPresignedUrl('leaders/deputy-speaker-butu-butu.jpg', 604800),
+    const [executive, legislative, judiciary] = await Promise.all([
+      getPresignedUrl('hero-banners/government-house.jpg', 604800),
+      getPresignedUrl('hero-banners/kano-cityscape.jpg', 604800),
+      getPresignedUrl('landmarks/emirs-palace.jpg', 604800),
     ]);
 
     res.status(200).json({
       success: true,
-      data: { speaker, deputy, expiresIn: 604800 },
+      data: { executive, legislative, judiciary, expiresIn: 604800 },
+    });
+  } catch (error) {
+    logger.error('Get government arms images error:', error);
+    res.status(500).json({ success: false, message: 'Failed to get government arms images', error: error.message });
+  }
+};
+
+exports.getAssemblyLeadershipImages = async (req, res) => {
+  try {
+    const [speaker, deputy, attorneyGeneral, chiefJudge] = await Promise.all([
+      getPresignedUrl('leaders/speaker-falgore.jpg', 604800),
+      getPresignedUrl('leaders/deputy-speaker-butu-butu.jpg', 604800),
+      getPresignedUrl('leaders/attorney-general-maude.jpg', 604800),
+      getPresignedUrl('leaders/chief-judge-dije-aboki.jpg', 604800),
+    ]);
+
+    res.status(200).json({
+      success: true,
+      data: { speaker, deputy, attorneyGeneral, chiefJudge, expiresIn: 604800 },
     });
   } catch (error) {
     logger.error('Get assembly leadership images error:', error);

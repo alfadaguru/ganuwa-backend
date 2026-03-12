@@ -33,6 +33,13 @@ const mdaSchema = new mongoose.Schema(
       enum: Object.values(MDA_TYPES),
       required: [true, 'MDA type is required'],
     },
+    sector: {
+      type: String,
+      enum: ['administration', 'economic', 'law_and_justice', 'social_services'],
+    },
+    subSector: {
+      type: String,
+    },
     description: {
       en: {
         type: String,

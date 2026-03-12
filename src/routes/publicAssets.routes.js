@@ -45,6 +45,13 @@ router.get('/about-section', publicAssetsController.getAboutSectionImages);
 router.get('/defaults', publicAssetsController.getDefaultImages);
 
 /**
+ * @route   GET /api/v1/public-assets/government-arms
+ * @desc    Get presigned URLs for three arms of government images
+ * @access  Public
+ */
+router.get('/government-arms', publicAssetsController.getGovernmentArmsImages);
+
+/**
  * @route   GET /api/v1/public-assets/assembly-leadership
  * @desc    Get presigned URLs for Speaker and Deputy Speaker photos
  * @access  Public

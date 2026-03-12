@@ -3,6 +3,27 @@ const { successResponse, paginatedResponse, errorResponse } = require('../utils/
 const { HTTP_STATUS } = require('../config/constants');
 const { catchAsync, AppError } = require('../middlewares/error.middleware');
 const logger = require('../utils/logger');
+const { getPresignedUrl } = require('../utils/s3Upload');
+
+/**
+ * Resolve featuredImage URL - if it's an S3 key (not http), generate presigned URL
+ */
+async function resolveNewsImage(newsItem) {
+  if (!newsItem) return newsItem;
+  const obj = newsItem.toObject ? newsItem.toObject() : { ...newsItem };
+  if (obj.featuredImage?.url && !obj.featuredImage.url.startsWith('http')) {
+    try {
+      obj.featuredImage.url = await getPresignedUrl(obj.featuredImage.url, 604800);
+    } catch (e) {
+      // keep original value on failure
+    }
+  }
+  return obj;
+}
+
+async function resolveNewsImages(newsArray) {
+  return Promise.all(newsArray.map(resolveNewsImage));
+}
 
 /**
  * @desc    Get all news
@@ -52,7 +73,8 @@ const getAllNews = catchAsync(async (req, res, next) => {
     News.countDocuments(query),
   ]);
 
-  paginatedResponse(res, news, page, limit, totalItems, 'News retrieved successfully');
+  const resolvedNews = await resolveNewsImages(news);
+  paginatedResponse(res, resolvedNews, page, limit, totalItems, 'News retrieved successfully');
 });
 
 /**
@@ -72,7 +94,8 @@ const getNewsById = catchAsync(async (req, res, next) => {
   // Increment views
   await news.incrementViews();
 
-  successResponse(res, HTTP_STATUS.OK, { news }, 'News retrieved successfully');
+  const resolved = await resolveNewsImage(news);
+  successResponse(res, HTTP_STATUS.OK, { news: resolved }, 'News retrieved successfully');
 });
 
 /**
@@ -92,7 +115,8 @@ const getNewsBySlug = catchAsync(async (req, res, next) => {
   // Increment views
   await news.incrementViews();
 
-  successResponse(res, HTTP_STATUS.OK, { news }, 'News retrieved successfully');
+  const resolved = await resolveNewsImage(news);
+  successResponse(res, HTTP_STATUS.OK, { news: resolved }, 'News retrieved successfully');
 });
 
 /**
@@ -171,7 +195,8 @@ const getFeaturedNews = catchAsync(async (req, res, next) => {
     .limit(parseInt(limit))
     .lean();
 
-  successResponse(res, HTTP_STATUS.OK, { news }, 'Featured news retrieved successfully');
+  const resolvedNews = await resolveNewsImages(news);
+  successResponse(res, HTTP_STATUS.OK, { news: resolvedNews }, 'Featured news retrieved successfully');
 });
 
 /**
@@ -198,7 +223,8 @@ const getRelatedNews = catchAsync(async (req, res, next) => {
     .limit(parseInt(limit))
     .lean();
 
-  successResponse(res, HTTP_STATUS.OK, { news: relatedNews }, 'Related news retrieved successfully');
+  const resolvedRelated = await resolveNewsImages(relatedNews);
+  successResponse(res, HTTP_STATUS.OK, { news: resolvedRelated }, 'Related news retrieved successfully');
 });
 
 module.exports = {
