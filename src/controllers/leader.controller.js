@@ -3,23 +3,19 @@ const { successResponse, paginatedResponse } = require('../utils/response');
 const { HTTP_STATUS } = require('../config/constants');
 const { catchAsync, AppError } = require('../middlewares/error.middleware');
 const logger = require('../utils/logger');
-const { getPresignedUrl } = require('../utils/s3Upload');
+const { getPublicUrl } = require('../utils/s3Upload');
 
-// If photo is an S3 key (no http), generate a presigned URL
-async function resolvePhotoUrl(photo) {
+// If photo is an S3 key (no http), generate public URL
+function resolvePhotoUrl(photo) {
   if (!photo) return photo;
   if (photo.startsWith('http')) return photo;
-  try {
-    return await getPresignedUrl(photo, 604800);
-  } catch {
-    return photo;
-  }
+  return getPublicUrl(photo);
 }
 
-async function resolveLeaderPhoto(leader) {
+function resolveLeaderPhoto(leader) {
   if (!leader) return leader;
   const resolved = { ...leader };
-  resolved.photo = await resolvePhotoUrl(leader.photo);
+  resolved.photo = resolvePhotoUrl(leader.photo);
   return resolved;
 }
 

@@ -3,26 +3,22 @@ const { successResponse, paginatedResponse, errorResponse } = require('../utils/
 const { HTTP_STATUS } = require('../config/constants');
 const { catchAsync, AppError } = require('../middlewares/error.middleware');
 const logger = require('../utils/logger');
-const { getPresignedUrl } = require('../utils/s3Upload');
+const { getPublicUrl } = require('../utils/s3Upload');
 
 /**
- * Resolve featuredImage URL - if it's an S3 key (not http), generate presigned URL
+ * Resolve featuredImage URL - if it's an S3 key (not http), generate public URL
  */
-async function resolveNewsImage(newsItem) {
+function resolveNewsImage(newsItem) {
   if (!newsItem) return newsItem;
   const obj = newsItem.toObject ? newsItem.toObject() : { ...newsItem };
   if (obj.featuredImage?.url && !obj.featuredImage.url.startsWith('http')) {
-    try {
-      obj.featuredImage.url = await getPresignedUrl(obj.featuredImage.url, 604800);
-    } catch (e) {
-      // keep original value on failure
-    }
+    obj.featuredImage.url = getPublicUrl(obj.featuredImage.url);
   }
   return obj;
 }
 
-async function resolveNewsImages(newsArray) {
-  return Promise.all(newsArray.map(resolveNewsImage));
+function resolveNewsImages(newsArray) {
+  return newsArray.map(resolveNewsImage);
 }
 
 /**

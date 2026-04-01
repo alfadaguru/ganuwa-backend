@@ -30,8 +30,8 @@ async function uploadToS3(fileBuffer, originalname, mimetype, folder = 'uploads'
 
     await s3Client.send(command);
 
-    // Generate presigned URL (valid for 7 days)
-    const url = await getPresignedUrl(key);
+    // Generate direct public URL (container is public)
+    const url = getPublicUrl(key);
 
     return {
       key,
@@ -97,9 +97,21 @@ async function refreshPresignedUrl(key) {
   return getPresignedUrl(key);
 }
 
+/**
+ * Get direct public URL for a file (container must be public)
+ * @param {string} key - File key in S3
+ * @returns {string}
+ */
+function getPublicUrl(key) {
+  const endpoint = process.env.AWS_ENDPOINT || 'https://eu2.contabostorage.com';
+  const bucket = process.env.AWS_BUCKET;
+  return `${endpoint}/${bucket}/${key}`;
+}
+
 module.exports = {
   uploadToS3,
   deleteFromS3,
   getPresignedUrl,
   refreshPresignedUrl,
+  getPublicUrl,
 };

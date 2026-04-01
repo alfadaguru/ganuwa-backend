@@ -1,4 +1,4 @@
-const { uploadToS3, deleteFromS3, refreshPresignedUrl } = require('../utils/s3Upload');
+const { uploadToS3, deleteFromS3, getPublicUrl } = require('../utils/s3Upload');
 const logger = require('../utils/logger');
 
 /**
@@ -137,9 +137,9 @@ exports.refreshUrl = async (req, res) => {
       });
     }
 
-    const url = await refreshPresignedUrl(key);
+    const url = getPublicUrl(key);
 
-    logger.info(`Presigned URL refreshed: ${key}`);
+    logger.info(`Public URL generated: ${key}`);
 
     res.status(200).json({
       success: true,

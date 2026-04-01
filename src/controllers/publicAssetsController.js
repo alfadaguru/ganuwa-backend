@@ -1,23 +1,18 @@
-const { getPresignedUrl } = require('../utils/s3Upload');
+const { getPublicUrl } = require('../utils/s3Upload');
 const logger = require('../utils/logger');
 
 /**
- * Get presigned URL for Kano State logo
+ * Get public URL for Kano State logo
  * Public endpoint - no authentication required
  */
 exports.getLogoUrl = async (req, res) => {
   try {
     const key = 'assets/kano-state-logo.png';
-
-    // Generate presigned URL valid for 7 days
-    const url = await getPresignedUrl(key, 604800);
+    const url = getPublicUrl(key);
 
     res.status(200).json({
       success: true,
-      data: {
-        url,
-        expiresIn: 604800, // 7 days in seconds
-      },
+      data: { url },
     });
   } catch (error) {
     logger.error('Logo URL error:', error);
@@ -30,7 +25,7 @@ exports.getLogoUrl = async (req, res) => {
 };
 
 /**
- * Get presigned URL for landmark images
+ * Get public URL for landmark images
  * Public endpoint - no authentication required
  */
 exports.getLandmarkImageUrl = async (req, res) => {
@@ -57,17 +52,11 @@ exports.getLandmarkImageUrl = async (req, res) => {
     }
 
     const key = `landmarks/${imageName}`;
-
-    // Generate presigned URL valid for 7 days
-    const url = await getPresignedUrl(key, 604800);
+    const url = getPublicUrl(key);
 
     res.status(200).json({
       success: true,
-      data: {
-        url,
-        imageName,
-        expiresIn: 604800, // 7 days in seconds
-      },
+      data: { url, imageName },
     });
   } catch (error) {
     logger.error('Landmark image URL error:', error);
@@ -80,7 +69,7 @@ exports.getLandmarkImageUrl = async (req, res) => {
 };
 
 /**
- * Get presigned URLs for all landmark images
+ * Get public URLs for all landmark images
  * Public endpoint - no authentication required
  */
 exports.getAllLandmarkImageUrls = async (req, res) => {
@@ -96,29 +85,14 @@ exports.getAllLandmarkImageUrls = async (req, res) => {
       'bagauda-lake.jpg',
     ];
 
-    const urlPromises = landmarkImages.map(async (imageName) => {
-      const key = `landmarks/${imageName}`;
-      const url = await getPresignedUrl(key, 604800);
-      return {
-        imageName,
-        url,
-      };
-    });
-
-    const images = await Promise.all(urlPromises);
-
-    // Convert to object for easier access
-    const imagesMap = images.reduce((acc, img) => {
-      acc[img.imageName] = img.url;
+    const imagesMap = landmarkImages.reduce((acc, imageName) => {
+      acc[imageName] = getPublicUrl(`landmarks/${imageName}`);
       return acc;
     }, {});
 
     res.status(200).json({
       success: true,
-      data: {
-        images: imagesMap,
-        expiresIn: 604800, // 7 days in seconds
-      },
+      data: { images: imagesMap },
     });
   } catch (error) {
     logger.error('Get all landmark images error:', error);
@@ -131,7 +105,7 @@ exports.getAllLandmarkImageUrls = async (req, res) => {
 };
 
 /**
- * Get presigned URLs for hero slider images
+ * Get public URLs for hero slider images
  * Public endpoint - no authentication required
  */
 exports.getHeroSliderImages = async (req, res) => {
@@ -142,23 +116,15 @@ exports.getHeroSliderImages = async (req, res) => {
       { key: 'hero-banners/kano-cityscape.jpg', name: 'Kano Cityscape' },
     ];
 
-    const urlPromises = sliderImages.map(async (img) => {
-      const url = await getPresignedUrl(img.key, 604800);
-      return {
-        key: img.key,
-        name: img.name,
-        url,
-      };
-    });
-
-    const images = await Promise.all(urlPromises);
+    const images = sliderImages.map((img) => ({
+      key: img.key,
+      name: img.name,
+      url: getPublicUrl(img.key),
+    }));
 
     res.status(200).json({
       success: true,
-      data: {
-        images,
-        expiresIn: 604800, // 7 days in seconds
-      },
+      data: { images },
     });
   } catch (error) {
     logger.error('Get hero slider images error:', error);
@@ -171,7 +137,7 @@ exports.getHeroSliderImages = async (req, res) => {
 };
 
 /**
- * Get presigned URLs for about section images
+ * Get public URLs for about section images
  * Public endpoint - no authentication required
  */
 exports.getAboutSectionImages = async (req, res) => {
@@ -183,24 +149,16 @@ exports.getAboutSectionImages = async (req, res) => {
       { key: 'about/588193abdaa517dc3a408559dc96418f.jpg', name: 'lgas', section: 'Local Governments' },
     ];
 
-    const urlPromises = aboutImages.map(async (img) => {
-      const url = await getPresignedUrl(img.key, 604800);
-      return {
-        key: img.key,
-        name: img.name,
-        section: img.section,
-        url,
-      };
-    });
-
-    const images = await Promise.all(urlPromises);
+    const images = aboutImages.map((img) => ({
+      key: img.key,
+      name: img.name,
+      section: img.section,
+      url: getPublicUrl(img.key),
+    }));
 
     res.status(200).json({
       success: true,
-      data: {
-        images,
-        expiresIn: 604800, // 7 days in seconds
-      },
+      data: { images },
     });
   } catch (error) {
     logger.error('Get about section images error:', error);
@@ -213,52 +171,23 @@ exports.getAboutSectionImages = async (req, res) => {
 };
 
 /**
- * Get presigned URLs for default fallback images
+ * Get public URLs for default fallback images
  * Public endpoint - no authentication required
  */
 exports.getDefaultImages = async (req, res) => {
   try {
-    const defaultImages = [
-      { key: 'defaults/news-default.jpg', name: 'news', type: 'default' },
-      { key: 'defaults/leader-male-default.jpg', name: 'leaders', type: 'male' },
-      { key: 'defaults/leader-female-default.jpg', name: 'leaders', type: 'female' },
-    ];
-
-    const urlPromises = defaultImages.map(async (img) => {
-      const url = await getPresignedUrl(img.key, 604800);
-      return {
-        key: img.key,
-        name: img.name,
-        type: img.type,
-        url,
-      };
-    });
-
-    const images = await Promise.all(urlPromises);
-
-    // Organize by category
     const organized = {
-      news: { default: '' },
-      leaders: { male: '', female: '', default: '' },
+      news: { default: getPublicUrl('defaults/news-default.jpg') },
+      leaders: {
+        male: getPublicUrl('defaults/leader-male-default.jpg'),
+        female: getPublicUrl('defaults/leader-female-default.jpg'),
+        default: getPublicUrl('defaults/leader-male-default.jpg'),
+      },
     };
-
-    images.forEach((img) => {
-      if (img.name === 'news') {
-        organized.news.default = img.url;
-      } else if (img.name === 'leaders') {
-        organized.leaders[img.type] = img.url;
-        if (img.type === 'male') {
-          organized.leaders.default = img.url; // Use male as default
-        }
-      }
-    });
 
     res.status(200).json({
       success: true,
-      data: {
-        images: organized,
-        expiresIn: 604800, // 7 days in seconds
-      },
+      data: { images: organized },
     });
   } catch (error) {
     logger.error('Get default images error:', error);
@@ -271,20 +200,18 @@ exports.getDefaultImages = async (req, res) => {
 };
 
 /**
- * Get presigned URLs for Speaker and Deputy Speaker photos
+ * Get public URLs for government arms images
  * Public endpoint - no authentication required
  */
 exports.getGovernmentArmsImages = async (req, res) => {
   try {
-    const [executive, legislative, judiciary] = await Promise.all([
-      getPresignedUrl('hero-banners/government-house.jpg', 604800),
-      getPresignedUrl('hero-banners/kano-cityscape.jpg', 604800),
-      getPresignedUrl('landmarks/emirs-palace.jpg', 604800),
-    ]);
-
     res.status(200).json({
       success: true,
-      data: { executive, legislative, judiciary, expiresIn: 604800 },
+      data: {
+        executive: getPublicUrl('hero-banners/government-house.jpg'),
+        legislative: getPublicUrl('hero-banners/kano-cityscape.jpg'),
+        judiciary: getPublicUrl('landmarks/emirs-palace.jpg'),
+      },
     });
   } catch (error) {
     logger.error('Get government arms images error:', error);
@@ -294,16 +221,14 @@ exports.getGovernmentArmsImages = async (req, res) => {
 
 exports.getAssemblyLeadershipImages = async (req, res) => {
   try {
-    const [speaker, deputy, attorneyGeneral, chiefJudge] = await Promise.all([
-      getPresignedUrl('leaders/speaker-falgore.jpg', 604800),
-      getPresignedUrl('leaders/deputy-speaker-butu-butu.jpg', 604800),
-      getPresignedUrl('leaders/attorney-general-maude.jpg', 604800),
-      getPresignedUrl('leaders/chief-judge-dije-aboki.jpg', 604800),
-    ]);
-
     res.status(200).json({
       success: true,
-      data: { speaker, deputy, attorneyGeneral, chiefJudge, expiresIn: 604800 },
+      data: {
+        speaker: getPublicUrl('leaders/speaker-falgore.jpg'),
+        deputy: getPublicUrl('leaders/deputy-speaker-butu-butu.jpg'),
+        attorneyGeneral: getPublicUrl('leaders/attorney-general-maude.jpg'),
+        chiefJudge: getPublicUrl('leaders/chief-judge-dije-aboki.jpg'),
+      },
     });
   } catch (error) {
     logger.error('Get assembly leadership images error:', error);
