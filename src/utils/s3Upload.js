@@ -99,12 +99,17 @@ async function refreshPresignedUrl(key) {
 
 /**
  * Get direct public URL for a file (container must be public)
+ * Contabo public URL format: https://eu2.contabostorage.com/<tenantId>:<bucket>/<key>
  * @param {string} key - File key in S3
  * @returns {string}
  */
 function getPublicUrl(key) {
   const endpoint = process.env.AWS_ENDPOINT || 'https://eu2.contabostorage.com';
+  const tenantId = process.env.CONTABO_TENANT_ID;
   const bucket = process.env.AWS_BUCKET;
+  if (tenantId) {
+    return `${endpoint}/${tenantId}:${bucket}/${key}`;
+  }
   return `${endpoint}/${bucket}/${key}`;
 }
 
